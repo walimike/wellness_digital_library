@@ -65,3 +65,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# For authentication
+gem 'devise'
+gem 'omniauth-google-oauth2'
+
+gem "dotenv-rails", "~> 3.1"
