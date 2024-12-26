@@ -68,6 +68,8 @@ end
 
 # For authentication
 gem 'devise'
+gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
 
 gem "dotenv-rails", "~> 3.1"

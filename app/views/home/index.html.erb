@@ -4,5 +4,7 @@
 <% else %>
   <h1>Welcome to Book Borrowing App</h1>
   <%= link_to 'Sign in with Google', user_google_oauth2_omniauth_authorize_path, method: :post %>
+  <%= link_to 'Login', new_user_session_path %>
+  <%= link_to 'Create account', new_user_registration_path %>
 <% end %>
 Hello <%= @my_id %>
