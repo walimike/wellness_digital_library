@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :authors
+  resources :categories
+  resources :books
   get 'home/index'
   devise_for :users, controllers: { 
     registrations: 'users/registrations',

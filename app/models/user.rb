@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  belongs_to :organization, optional: true
+  validates :role, inclusion: { in: %w[admin member author], message: "%{value} is not a valid role" }, allow_nil: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
@@ -8,7 +10,7 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.name = auth.info.name
-      # user.avatar_url = auth.info.image
+      user.avatar_url = auth.info.image
     end 
   end
 end
