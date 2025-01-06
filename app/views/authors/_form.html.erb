@@ -1,0 +1,36 @@
+<%= form_with(model: author, local: true, class: "needs-validation") do |form| %>
+  <% if author.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(author.errors.count, "error") %> prohibited this author from being saved:</h4>
+      <ul>
+        <% author.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Enter the author's name" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :bio, class: "form-label" %>
+    <%= form.text_area :bio, class: "form-control", placeholder: "Enter a short biography" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :cover_image, class: "form-label" %>
+    <%= form.file_field :cover_image, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :avatar, "Upload Avatar", class: "form-label" %>
+    <%= form.file_field :avatar, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit "Save Author", class: "btn btn-primary" %>
+  </div>
+<% end %>

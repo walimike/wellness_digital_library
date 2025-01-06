@@ -16,6 +16,8 @@ gem "puma", ">= 5.0"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
+gem "bootstrap"
+gem "sassc-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
@@ -65,3 +67,11 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# For authentication
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
+
+gem "dotenv-rails", "~> 3.1"
