@@ -6,7 +6,7 @@
 
   <p>
     <strong>Author:</strong>
-    <%= book.author %>
+    <%= book.author&.name %>
   </p>
 
   <p>
@@ -26,12 +26,21 @@
 
   <p>
     <strong>Cover image:</strong>
-    <%= book.cover_image %>
+    <%=image_tag (book.cover_image) if book.cover_image.attached? %>
   </p>
 
   <p>
     <strong>File path:</strong>
     <%= book.file_path %>
+  </p>
+
+  <p>
+    <strong>Attached File:</strong>
+    <% if book.file.attached? %>
+      <%= link_to "Download File", rails_blob_path(book.file, disposition: "attachment"), target: "_blank" %>
+    <% else %>
+      No file attached
+    <% end %>
   </p>
 
   <p>
