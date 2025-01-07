@@ -38,8 +38,9 @@
     <strong>Attached File:</strong>
     <% if book.file.attached? %>
       <%= link_to "Download File", rails_blob_path(book.file, disposition: "attachment"), target: "_blank" %>
+      <%= link_to "Read", "#", class: "btn btn-primary", id: "read-btn", data: { bs_toggle: "modal", bs_target: "#readModal", pdf_path: rails_blob_path(book.file) } %>
     <% else %>
-      No file attached
+      <p>No file attached</p>
     <% end %>
   </p>
 
@@ -49,3 +50,23 @@
   </p>
 
 </div>
+<div class="modal fade" id="readModal" tabindex="-1" aria-labelledby="readModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="readModalLabel">Read Book</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="pdf-viewer" class="pdf-viewer">
+          <canvas id="pdf-canvas"></canvas>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="prev-btn">Previous</button>
+        <button class="btn btn-secondary" id="next-btn">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+
