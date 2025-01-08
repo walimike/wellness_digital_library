@@ -1,64 +1,32 @@
-<div id="<%= dom_id book %>">
-  <p>
-    <strong>Title:</strong>
-    <%= book.title %>
-  </p>
-
-  <p>
-    <strong>Author:</strong>
-    <%= book.author&.name %>
-  </p>
-
-  <p>
-    <strong>Genre:</strong>
-    <%= book.genre %>
-  </p>
-
-  <p>
-    <strong>Synopsis:</strong>
-    <%= book.synopsis %>
-  </p>
-
-  <p>
-    <strong>Rating:</strong>
-    <%= book.rating %>
-  </p>
-
-  <p>
-    <strong>Cover image:</strong>
-    <%=image_tag (book.cover_image) if book.cover_image.attached? %>
-  </p>
-
-  <p>
-    <strong>File path:</strong>
-    <%= book.file_path %>
-  </p>
-
-  <p>
-    <strong>Attached File:</strong>
-    <% if book.file.attached? %>
-      <%= link_to "Download File", rails_blob_path(book.file, disposition: "attachment"), target: "_blank" %>
-      <%= link_to "Read", "#", class: "btn btn-primary", id: "read-btn", data: { bs_toggle: "modal", bs_target: "#readModal", pdf_path: rails_blob_path(book.file) } %>
-    <% else %>
-      <p>No file attached</p>
+<% rating = book.rating || 0 %>
+<tr id="<%= dom_id(book) %>" class="clickable-row" data-href="<%= book_path(book) %>">
+  <td><%= book.title %></td>
+  <td><%= book.author&.name %></td>
+  <td><%= book.genre %></td>
+  <td>
+    <% 5.times do |i| %>
+      <i class="fa-star <%= i < rating ? 'fas text-warning' : 'far text-muted' %>"></i>
     <% end %>
-  </p>
-
-  <p>
-    <strong>Availability status:</strong>
-    <%= book.availability_status %>
-  </p>
-
-</div>
+  </td>
+  <td>
+    <%= link_to "Show", book, class: "btn btn-info btn-sm me-2" %>
+    <% if book.file.attached? %>
+      <%= link_to "Download", rails_blob_path(book.file, disposition: "attachment"), target: "_blank", class: "btn btn-warning btn-sm me-2" %>
+      <%= link_to "Read", "#", class: "btn btn-primary btn-sm", id: "read-btn", data: { bs_toggle: "modal", bs_target: "#readModal", pdf_path: rails_blob_path(book.file) } %>
+    <% else %>
+      <span class="text-muted">No file attached</span>
+    <% end %>
+  </td>
+</tr>
 <div class="modal fade" id="readModal" tabindex="-1" aria-labelledby="readModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="readModalLabel">Read Book</h5>
+        <h5 class="modal-title" id="readModalLabel"><%= book.title %> by <%= book.author&.name  %></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div id="pdf-viewer" class="pdf-viewer">
+        <div id="pdf-viewer" class="pdf-viewer text-center">
           <canvas id="pdf-canvas"></canvas>
         </div>
       </div>
@@ -69,4 +37,3 @@
     </div>
   </div>
 </div>
-

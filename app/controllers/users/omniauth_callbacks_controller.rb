@@ -1,6 +1,5 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
-    puts ">>>>>>>>>>>>>>>>>>>>>>>>>>"
     user = User.from_omniauth(request.env['omniauth.auth'])
 
     if user.present?
