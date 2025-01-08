@@ -1,22 +1,14 @@
-<div id="<%= dom_id(author) %>" class="card shadow-sm mb-4">
-  <div class="card-body">
-    <h5 class="card-title"><strong><%= author.name %></strong></h5>
-    <hr>
-
-    <p class="card-text">
-      <strong>Bio:</strong>
-      <br>
-      <%= author.bio %>
-    </p>
-
-    <img src="<%= author.avatar_url %>" alt="<%= author.name %>'s Avatar" class="img-fluid rounded-circle" style="max-width: 150px;">
-
+<tr id="<%= dom_id(author) %>" class="clickable-row" data-href="<%= author_path(author) %>">
+  <td><%= author.name %></td>
+  <td><%= author.bio %></td>
+  <td>
     <% if author.avatar.attached? %>
       <div class="text-center mt-3">
         <img src="<%= url_for(author.avatar) %>" alt="<%= author.name %>'s Avatar" class="img-fluid rounded-circle" style="max-width: 150px;">
       </div>
     <% else %>
-      <p class="text-muted"><em>No avatar available</em></p>
+      <p class="text-muted"><em>None</em></p>
     <% end %>
-  </div>
-</div>
+  </td>
+  <td><%= link_to "Author details", author, class:"btn btn-outline-primary" %></td>
+</tr>
