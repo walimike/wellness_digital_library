@@ -17,9 +17,11 @@
     <%= render 'layouts/navbar' %>
     <div class="d-flex">
       <!-- Sidebar -->
-      <div id="sidebar" class="sidebar bg-light vh-100 position-fixed">
-        <%= render 'layouts/sidenav' %>
-      </div>
+      <% if user_signed_in? %>
+        <div id="sidebar" class="sidebar bg-light vh-100 position-fixed">
+          <%= render 'layouts/sidenav' %>
+        </div>
+      <% end %>
 
       <!-- Main Content -->
       <div id="main-content" class="flex-grow-1 ms-5 transition-width">
