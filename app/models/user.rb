@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   belongs_to :organization, optional: true
+  has_many :book_purchases, dependent: :destroy
+  has_many :purchased_books, through: :book_purchases, source: :book
+
   validates :role, inclusion: { in: %w[admin member author], message: "%{value} is not a valid role" }, allow_nil: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,

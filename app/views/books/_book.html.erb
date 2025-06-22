@@ -10,18 +10,16 @@
     <% end %>
   </td>
   <td>
-    <% if book.price.present? && book.price > 0 %>
-      <%= button_to "Buy", stripe_checkout_path(book), method: :post, class: "btn btn-primary btn-sm" %>
-    <% end %>
-    <%= link_to "View", book, class: "btn btn-outline-primary btn-sm me-2" %>
+    <%= link_to "View", book, class: "btn btn-outline-primary btn-sm me-2" if book.price.nil? || book.book_purchases.exists?(user: current_user, paid: true) %>
 
-    <% if book.file.attached? %>
+    <% if book.price.present? && !book.book_purchases.exists?(user: current_user, paid: true) %>
+      <%= link_to "Buy", checkout_book_path(book), class: "btn btn-success btn-sm me-2" %>
+
+    <% end %>
+
+    <% if book.file.attached? && book.book_purchases.exists?(user: current_user, paid: true) %>
       <%= link_to "Download", rails_blob_path(book.file, disposition: "attachment"), target: "_blank", class: "btn btn-warning btn-sm me-2" %>
-    <% else %>
-      <span class="text-muted">No file attached</span>
     <% end %>
-
-    
   </td>
 
 </tr>

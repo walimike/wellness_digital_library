@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   resources :categories
   resources :books
   get 'home/index'
-  post 'stripe_checkout/:book_id', to: 'stripe_checkouts#create', as: :stripe_checkout
+  get '/books/:id/checkout', to: 'books#checkout', as: :checkout_book
+  post '/books/:id/confirm_payment', to: 'stripe_checkouts#create', as: :confirm_payment_book
+
+  # post 'stripe_checkout/:book_id', to: 'stripe_checkouts#create', as: :stripe_checkout
+  get 'stripe/success', to: 'stripe_checkouts#success', as: :stripe_success
+
 
   devise_for :users, controllers: { 
     registrations: 'users/registrations',

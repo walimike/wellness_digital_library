@@ -18,11 +18,25 @@ class BooksController < ApplicationController
     end
   end
   
-  
-
-  # GET /books/1 or /books/1.json
   def show
+    @book = Book.find(params[:id])
+
+    if @book.price.present? && @book.price > 0
+      unless @book.book_purchases.exists?(user: current_user, paid: true)
+        redirect_to books_path, alert: "You need to buy this book to view it."
+      end
+    end
   end
+
+  def checkout
+    @book = Book.find(params[:id])
+
+    if @book.book_purchases.exists?(user: current_user, paid: true)
+      redirect_to @book, notice: "You've already purchased this book."
+    end
+  end
+
+
 
   # GET /books/new
   def new
