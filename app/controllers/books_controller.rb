@@ -4,7 +4,21 @@ class BooksController < ApplicationController
   # GET /books or /books.json
   def index
     @books = Book.all
+  
+    # Filter by author, category, or title
+    @books = @books.where(author_id: params[:author_id]) if params[:author_id].present?
+    @books = @books.where(category_id: params[:category_id]) if params[:category_id].present?
+    @books = @books.where("title ILIKE ?", "%#{params[:title]}%") if params[:title].present?
+  
+    # Sorting logic
+    if params[:sort].present?
+      sort_column = params[:sort]
+      sort_direction = params[:direction] == "desc" ? "desc" : "asc"
+      @books = @books.order("#{sort_column} #{sort_direction}")
+    end
   end
+  
+  
 
   # GET /books/1 or /books/1.json
   def show

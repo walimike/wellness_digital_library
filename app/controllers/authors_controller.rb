@@ -21,7 +21,7 @@ class AuthorsController < ApplicationController
 
   # POST /authors or /authors.json
   def create
-    @author = Author.new(author_params)
+    author = Author.new(author_params)
   
     if params[:author][:avatar_url].present?
       uploaded_file = params[:author][:avatar_url]

@@ -1,14 +1,6 @@
 <tr id="<%= dom_id(author) %>" class="clickable-row" data-href="<%= author_path(author) %>">
+  <td><%= author.created_at.strftime("%B %d %Y") %></td>
   <td><%= author.name %></td>
   <td><%= author.bio %></td>
-  <td>
-    <% if author.avatar.attached? %>
-      <div class="text-center mt-3">
-        <img src="<%= url_for(author.avatar) %>" alt="<%= author.name %>'s Avatar" class="img-fluid rounded-circle" style="max-width: 150px;">
-      </div>
-    <% else %>
-      <p class="text-muted"><em>None</em></p>
-    <% end %>
-  </td>
   <td><%= link_to "Author details", author, class:"btn btn-outline-primary" %></td>
 </tr>
