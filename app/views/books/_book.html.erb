@@ -3,19 +3,27 @@
   <td><%= book.title %></td>
   <td><%= book.author&.name %></td>
   <td><%= book.category&.name %></td>
+  <td><%= number_to_currency(book.price, unit: "$") %></td>
   <td>
     <% 5.times do |i| %>
       <i class="fa-star <%= i < rating ? 'fas text-warning' : 'far text-muted' %>"></i>
     <% end %>
   </td>
   <td>
+    <% if book.price.present? && book.price > 0 %>
+      <%= button_to "Buy", stripe_checkout_path(book), method: :post, class: "btn btn-primary btn-sm" %>
+    <% end %>
     <%= link_to "View", book, class: "btn btn-outline-primary btn-sm me-2" %>
+
     <% if book.file.attached? %>
       <%= link_to "Download", rails_blob_path(book.file, disposition: "attachment"), target: "_blank", class: "btn btn-warning btn-sm me-2" %>
     <% else %>
       <span class="text-muted">No file attached</span>
     <% end %>
+
+    
   </td>
+
 </tr>
 <div class="modal fade" id="readModal" tabindex="-1" aria-labelledby="readModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">

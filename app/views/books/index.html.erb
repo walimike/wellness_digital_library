@@ -34,6 +34,7 @@
         <th>Title</th>
         <th>Author</th>
         <th>Genre</th>
+        <th>Price</th>
         <th>
           <%= link_to "Rating", books_path(params.permit(:author_id, :category_id, :title).merge(sort: "rating", direction: toggle_sort_direction("rating"))) %>
         </th>

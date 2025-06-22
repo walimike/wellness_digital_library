@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :categories
   resources :books
   get 'home/index'
+  post 'stripe_checkout/:book_id', to: 'stripe_checkouts#create', as: :stripe_checkout
+
   devise_for :users, controllers: { 
     registrations: 'users/registrations',
     sessions: 'users/sessions',

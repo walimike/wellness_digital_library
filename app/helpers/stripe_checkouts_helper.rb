@@ -1,0 +1,2 @@
+module StripeCheckoutsHelper
+end
