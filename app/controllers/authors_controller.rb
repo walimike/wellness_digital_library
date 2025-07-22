@@ -32,8 +32,8 @@ class AuthorsController < ApplicationController
       author.avatar_url = "/uploads/#{uploaded_file.original_filename}"
     end
   
-    if author.save
-      redirect_to author_path(author), notice: "Author created successfully."
+    if @author.save
+      redirect_to author_path(@author), notice: "Author created successfully."
     else
       render :new
     end
