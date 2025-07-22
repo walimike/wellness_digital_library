@@ -85,14 +85,33 @@
       <div class="card p-3">
         <h6>Book Authors</h6>
         <hr>
-        <ul class="list-unstyled">
-          <% @authors.each do |author| %>
-            <li class="mb-2">
-              <strong><%= author.name %></strong><br>
-              <small><%= author.bio %></small>
-            </li>
-          <% end %>
-        </ul>
+<ul class="list-unstyled">
+  <% @authors.each do |author| %>
+    <li class="mb-3 d-flex align-items-center" style="height: 100px; overflow: hidden;">
+      <% if author.avatar.attached? %>
+        <div class="me-3">
+          <img src="<%= url_for(author.avatar) %>" alt="<%= author.name %>'s Avatar"
+               class="rounded-circle"
+               style="width: 80px; height: 80px; object-fit: cover;">
+        </div>
+      <% else %>
+        <div class="me-3 d-flex align-items-center justify-content-center rounded-circle bg-secondary text-white fw-bold"
+             style="width: 80px; height: 80px; font-size: 1.25rem;">
+          <%= author.name.split.map { |n| n[0] }.join.upcase.first(2) %>
+        </div>
+      <% end %>
+
+      <div class="flex-grow-1" style="min-width: 0;">
+        <strong><%= author.name %></strong><br>
+        <small class="text-muted d-block text-truncate" style="max-width: 100%;">
+          <%= author.bio %>
+        </small>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+
       </div>
     </div>
   </div>
