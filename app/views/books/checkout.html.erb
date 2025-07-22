@@ -1,11 +1,21 @@
-<div class="container mt-5">
-  <h2>Checkout</h2>
-  <p><strong>Title:</strong> <%= @book.title %></p>
-  <p><strong>Author:</strong> <%= @book.author&.name || 'Unknown' %></p>
-  <p><strong>Price:</strong> <%= number_to_currency(@book.price / 100.0) %></p>
+<h2>Confirm Purchase</h2>
+<p>Book: <%= @book.title %></p>
+<p>Price: $<%= number_with_precision(@book.price / 100.0, precision: 2) %></p>
 
-  <%= form_with url: confirm_payment_book_path(@book), method: :post do %>
-    <%= submit_tag "Confirm Payment", class: "btn btn-success" %>
-    <%= link_to "Cancel", books_path, class: "btn btn-secondary ms-2" %>
-  <% end %>
+
+<!-- Stimulus controller -->
+
+<div
+  data-controller="stripe-checkout"
+  data-stripe-checkout-publishable-key-value="<%= Rails.application.credentials.dig(:stripe, :publishable_key) %>"
+  data-stripe-checkout-url-value="<%= confirm_payment_book_path(@book) %>">
 </div>
+
+
+<!-- Confirm Payment Form -->
+<%= form_with url: confirm_payment_book_path(@book), method: :post, local: true do %>
+  <%= hidden_field_tag :book_id, @book.id %>
+  <%= submit_tag "Confirm Payment", class: "btn btn-success" %>
+<% end %>
+
+<%= link_to "Cancel", books_path, class: "btn btn-secondary mt-2" %>

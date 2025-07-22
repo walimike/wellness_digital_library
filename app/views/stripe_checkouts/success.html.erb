@@ -1,0 +1,8 @@
+<h1>🎉 Payment Successful!</h1>
+<p>Thank you for your purchase.</p>
+
+<% if @session_id.present? %>
+  <p>Your Stripe session ID is: <code><%= @session_id %></code></p>
+<% end %>
+
+<%= link_to "Go back to books", books_path, class: "btn btn-primary mt-3" %>
