@@ -4,6 +4,9 @@ class BooksController < ApplicationController
   # GET /books or /books.json
   def index
     @books = Book.all
+    @authors_count = Author.count
+    @books_count = Book.count
+    @categories_count = Category.count
   end
 
   # GET /books/1 or /books/1.json
