@@ -1,39 +1,23 @@
-<div class="d-flex flex-column sidebar bg-light collapsed" id="sidebar">
-  <header class="d-flex align-items-center px-3 py-2 mb-5">
-    <!-- Expand Sidebar Button -->
-    <i class="icon-icn_resize_expand me-2" id="btn-open" role="button" aria-label="Expand Sidebar">
-      <%= render 'application/icons/icn_resize_expand' %>
-    </i>
-
-    <!-- Collapse Sidebar Button -->
-    <i class="icon-icn_resize_contract ms-auto" id="btn-close" role="button" aria-label="Collapse Sidebar">
-      <%= render 'application/icons/icn_resize_contract' %>
-    </i>
-  </header>
-
+<div class="mt-5 d-flex flex-column sidebar bg-light collapsed" id="sidebar">
   <ul class="nav flex-column mt-3 mb-auto">
     <li class="nav-item mb-2">
-      <a href="/" class="nav-link d-flex align-items-center text-dark" aria-current="page">
-        <i class="me-2"><%= render "application/icons/icn_dashboard" %></i>
-        <span class="nav-item-title">Dashboard</span>
+      <a href="/" class="nav-link d-flex align-items-center text-dark" aria-current="page" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard">
+        <i class="me-2"><%= render "application/icons/icn_home" %></i>
       </a>
     </li>
     <li class="nav-item mb-2">
-      <a href="/authors" class="nav-link d-flex align-items-center text-dark" aria-current="page">
-        <i class="me-2"><%= render "application/icons/icn_dashboard" %></i>
-        <span class="nav-item-title">Authors</span>
+      <a href="/authors" class="nav-link d-flex align-items-center text-dark" aria-current="page" data-bs-toggle="tooltip" data-bs-placement="right" title="Authors">
+        <i class="me-2"><%= render "application/icons/icn_profile" %></i>
       </a>
     </li>
     <li class="nav-item mb-2">
-      <a href="/books" class="nav-link d-flex align-items-center text-dark" aria-current="page">
-        <i class="me-2"><%= render "application/icons/icn_dashboard" %></i>
-        <span class="nav-item-title">Books</span>
+      <a href="/books" class="nav-link d-flex align-items-center text-dark" aria-current="page" data-bs-toggle="tooltip" data-bs-placement="right" title="Books">
+        <i class="me-2"><%= render "application/icons/icn_document_pdf" %></i>
       </a>
     </li>
     <li class="nav-item mb-2">
-      <a href="/categories" class="nav-link d-flex align-items-center text-dark" aria-current="page">
+      <a href="/categories" class="nav-link d-flex align-items-center text-dark" aria-current="page" data-bs-toggle="tooltip" data-bs-placement="right" title="Categories">
         <i class="me-2"><%= render "application/icons/icn_dashboard" %></i>
-        <span class="nav-item-title">Categories</span>
       </a>
     </li>
   </ul>

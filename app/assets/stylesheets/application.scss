@@ -38,35 +38,18 @@
     transform: rotateY(0);
   }
 }
-.sidebar {
-  width: 250px;
-  transition: width 0.3s ease;
-  height: 100vh;
-  z-index: 1000 !important;
-}
 
 .sidebar.collapsed {
   width: 60px;
+  min-height: 100vh;
+  transition: all 0.3s ease-in-out;
 }
 
-#btn-open {
-  display: none;
+.sidebar .nav-link {
+  justify-content: center;
+  padding: 1rem 0.5rem;
 }
 
-.sidebar.collapsed #btn-open {
-  display: inline-block;
-}
-
-.sidebar.collapsed #btn-close {
-  display: none;
-}
-
-.container-fluid {
-  transition: margin-left 0.3s ease;
-  margin-left: 25px;
-  width: 95%;
-}
-
-.sidebar.collapsed ~ .container-fluid {
-  margin-left: 60px;
+.sidebar .nav-link i {
+  font-size: 1.2rem;
 }
