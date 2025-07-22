@@ -1,31 +1,32 @@
 <p class="text-success"><%= notice %></p>
 
-<div class="container mt-4">
+<div class="container">
   <!-- Dashboard Stats -->
   
-  <div class="d-flex text-center mb-4">
-    <a href="<%= authors_path %>">
-      <div>
-        <div class="card shadow-sm p-3">
+  <div class="dashboard-cards">
+    <div class="dashboard-card">
+      <%= link_to authors_path, class: "text-decoration-none text-dark" do %>
+        <div class="card shadow-sm p-3 text-center">
           <p>Book Authors</p>
-          <span class="text-success"><%= @authors_count %></span>
+          <span class="text-success"><%= @authors.count %></span>
         </div>
-      </div>
-    </a>
-    <div>
-      <div class="card shadow-sm p-3">
+      <% end %>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="card shadow-sm p-3 text-center">
         <p>Books</p>
-        <span class="text-warning"><%= @books_count %></span>
+        <span class="text-warning"><%= @books.count %></span>
       </div>
     </div>
-    <a href="<%= categories_path %>">
-    <div>
-      <div class="card shadow-sm p-3">
-        <p>Categories</p>
-        <span class="text-primary"><%= @categories_count %></</span>
-      </div>
+    <div class="dashboard-card">
+      <%= link_to categories_path, class: "text-decoration-none text-dark" do %>
+        <div class="card shadow-sm p-3 text-center">
+          <p>Categories</p>
+          <span class="text-success"><%= @categories_count %></span>
+        </div>
+      <% end %>
     </div>
-    </a>
   </div>
 
   <div class="row">
@@ -85,18 +86,12 @@
         <h6>Book Authors</h6>
         <hr>
         <ul class="list-unstyled">
-          <li class="mb-2">
-            <strong>Reinaldo Costa</strong><br>
-            <small>Sukabumi, Indonesia</small>
-          </li>
-          <li class="mb-2">
-            <strong>Ahmad Gurona</strong><br>
-            <small>Bandung, Indonesia</small>
-          </li>
-          <li>
-            <strong>Michele Angelina</strong><br>
-            <small>Jakarta, Indonesia</small>
-          </li>
+          <% @authors.each do |author| %>
+            <li class="mb-2">
+              <strong><%= author.name %></strong><br>
+              <small><%= author.bio %></small>
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>
@@ -121,5 +116,22 @@
   height: 100%;
   width: auto;
   object-fit: cover;
+}
+
+.dashboard-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.dashboard-card {
+  flex: 0 0 30%;
+}
+
+.dashboard-card a {
+  text-decoration: none;
+  color: inherit;
 }
 </style>

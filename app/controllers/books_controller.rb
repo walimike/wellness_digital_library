@@ -4,8 +4,7 @@ class BooksController < ApplicationController
   # GET /books or /books.json
   def index
     @books = Book.all
-    @authors_count = Author.count
-    @books_count = Book.count
+    @authors = Author.all
     @categories_count = Category.count
   end
 
@@ -24,7 +23,6 @@ class BooksController < ApplicationController
 
   # POST /books or /books.json
   def create
-    puts ">>>>>>>>>>>>>", book_params
     @book = Book.new(book_params)
 
     respond_to do |format|
