@@ -79,8 +79,9 @@ test:
 #
 production:
   <<: *default
-  database: wellness_digital_library_production
-  username: wellness_digital_library
-  password: <%= ENV["WELLNESS_DIGITAL_LIBRARY_DATABASE_PASSWORD"] %>
-  host: <%= ENV["DATABASE_HOST"] %>
-  port: 5432
+  url: <%= ENV["DATABASE_URL"] %>
+  # database: wellness_digital_library_production
+  # username: wellness_digital_library
+  # password: <%= ENV["WELLNESS_DIGITAL_LIBRARY_DATABASE_PASSWORD"] %>
+  # host: <%= ENV["DATABASE_HOST"] %>
+  # port: 5432
