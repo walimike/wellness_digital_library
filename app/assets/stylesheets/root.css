@@ -1,0 +1,262 @@
+/* Reset some basics */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  background-color: #e6f0ff;
+}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+header {
+  background: #5e1656;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  color: #eee;
+}
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.nav-links a {
+  text-decoration: none;
+  color: #eee;
+  font-weight: 500;
+}
+.mobile-menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+}
+.hero-content {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.hero-text {
+  flex: 1;
+  min-width: 300px;
+}
+.hero-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.hero-text p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+.hero-buttons .btn {
+  padding: 0.75rem 1.5rem;
+  margin-right: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.btn.primary {
+  background-color: #4CAF50;
+  color: white;
+}
+.btn.secondary {
+  background-color: #eee;
+  color: #333;
+}
+.hero-image {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Features */
+.features {
+  padding: 2rem 0;
+  background-color: #f9f9f9;
+}
+.features .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-around;
+}
+.feature-item {
+  flex: 1;
+  min-width: 250px;
+  text-align: center;
+}
+.feature-item img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+}
+
+/* Carousel */
+.carousel {
+  position: relative;
+  padding: 2rem 0;
+  background-color: #fff;
+}
+.carousel-inner {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.carousel-item {
+  display: none;
+  text-align: center;
+  padding: 1rem;
+}
+.carousel-item.active {
+  display: block;
+}
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+.carousel-control.prev {
+  left: 10px;
+}
+.carousel-control.next {
+  right: 10px;
+}
+
+/* Pricing / CTA */
+.pricing-cta {
+  padding: 2rem 0;
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+}
+.pricing-cta h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.pricing-cta p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Testimonials Grid */
+.testimonials-grid {
+  padding: 2rem 0;
+  /* background: #f9f9f9; */
+}
+.testimonials-grid .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+.testimonial-card {
+  background: white;
+  border: 1px solid #eee;
+  padding: 1.5rem;
+  max-width: 300px;
+  flex: 1;
+  min-width: 250px;
+}
+.testimonial-card h4 {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #555;
+}
+
+/* Footer */
+footer {
+  background: #333;
+  color: #eee;
+  padding: 1.5rem 0;
+  text-align: center;
+}
+footer .footer-links {
+  margin-bottom: 1rem;
+}
+footer .footer-links a {
+  color: #eee;
+  margin: 0 0.5rem;
+  text-decoration: none;
+}
+/* Activities Section */
+.activities {
+  
+  padding: 3rem 0;
+}
+.activities .section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #0073e6;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+.activity-item.reverse {
+  flex-direction: row-reverse;
+}
+.activity-image {
+  flex: 1;
+  min-width: 250px;
+  text-align: center;
+}
+.activity-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+.activity-text {
+  flex: 1;
+  min-width: 250px;
+}
+.activity-text h3 {
+  font-size: 1.5rem;
+  color: #0073e6;
+  margin-bottom: 0.5rem;
+}
+.activity-text p {
+  font-size: 1rem;
+  color: #333;
+}

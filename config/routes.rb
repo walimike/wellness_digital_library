@@ -2,13 +2,14 @@ Rails.application.routes.draw do
   resources :authors
   resources :categories
   resources :books
-  get 'home/index'
+  root 'home#root'
+
   devise_for :users, controllers: { 
     registrations: 'users/registrations',
     sessions: 'users/sessions',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  root to: 'books#index'
+  # root to: 'books#index'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
