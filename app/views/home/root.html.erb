@@ -4,7 +4,11 @@
       <h1>Fun Learning for Kids</h1>
       <p>Engaging lessons, games, and activities just for young learners.</p>
       <div class="hero-buttons">
-        <%= link_to "Get Started", new_user_session_path, class: "btn primary" %>
+        <% if user_signed_in? %>
+          <%= link_to "Checkout books", books_path, class: "btn primary" %>
+        <% else %>
+          <%= link_to "Get Started", new_user_session_path, class: "btn primary" %>
+        <% end %>
         <button class="btn secondary">Learn More</button>
       </div>
 
@@ -15,25 +19,6 @@
   </div>
 </section>
 
-<section class="features">
-  <div class="container">
-    <div class="feature-item">
-      <%= image_tag "https://via.placeholder.com/80.png?text=Icon1", alt: "Feature 1" %>
-      <h3>Interactive Lessons</h3>
-      <p>Hands-on activities to make learning fun.</p>
-    </div>
-    <div class="feature-item">
-      <%= image_tag "https://via.placeholder.com/80.png?text=Icon2", alt: "Feature 2" %>
-      <h3>Progress Tracking</h3>
-      <p>See how far your child has come.</p>
-    </div>
-    <div class="feature-item">
-      <%= image_tag "https://via.placeholder.com/80.png?text=Icon3", alt: "Feature 3" %>
-      <h3>Safe Environment</h3>
-      <p>Kid-friendly and ad-free.</p>
-    </div>
-  </div>
-</section>
 
 <section class="carousel">
   <div class="container">
