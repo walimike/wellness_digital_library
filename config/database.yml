@@ -80,7 +80,7 @@ test:
 #
 production:
   <<: *default
-  url: 'postgres://koyeb-adm:npg_Dq9zvtL6aSCd@ep-little-firefly-a24vj8xp.eu-central-1.pg.koyeb.app/koyebdb'
+  url: <%= ENV["DATABASE_URL"] %>
   # database: wellness_digital_library_production
   # username: wellness_digital_library
   # password: <%= ENV["WELLNESS_DIGITAL_LIBRARY_DATABASE_PASSWORD"] %>
